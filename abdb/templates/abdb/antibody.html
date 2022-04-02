@@ -1,0 +1,83 @@
+{% extends 'abdb/main.html' %}
+
+{% block content %}
+
+<div class="col-md">
+  <div class="card card-body">
+    <h3><a class="font-weight-bold">{{antibody1.name}}</a></h3>
+    <hr>
+    <dl class="row">
+      <dt class="col-sm-3">Host</dt>
+      <dd class="col-sm-9">{{antibody1.host}}</dd>
+
+      <dt class="col-sm-3">Company</dt>
+      <dd class="col-sm-9">{{antibody1.company}}</dd>
+
+      <dt class="col-sm-3">Cat. Num.</dt>
+      <dd class="col-sm-9">{{antibody1.cat_num}}</dd>
+
+      <dt class="col-sm-3">Total amount remaining (ul)</dt>
+      <dd class="col-sm-9">{{amount_total}}</dd>
+
+      <dt class="col-sm-3">Recommended WB concentrations</dt>
+      <dd class="col-sm-9">{{antibody1.recommended_WB_concentration}}</dd>
+
+      <dt class="col-sm-3">Recommended IHC concentrations</dt>
+      <dd class="col-sm-9">{{antibody1.recommended_IHC_concentration}}</dd>
+
+      <dt class="col-sm-3">Recommended IHC-P concentrations</dt>
+      <dd class="col-sm-9">{{antibody1.recommended_IHCp_concentration}}</dd>
+
+      <dt class="col-sm-3">Recommended IF concentrations</dt>
+      <dd class="col-sm-9">{{antibody1.recommended_IF_concentration}}</dd>
+
+      <dt class="col-sm-3">Notes</dt>
+      <dd class="col-sm-9">{{antibody1.notes}}</dd>
+
+      <dt class="col-sm-3">Date Entry Created</dt>
+      <dd class="col-sm-9">{{antibody1.date_created}}</dd>
+
+
+      <dt class="col-sm-3">    </dt>
+      <dd class="col-sm-9">    </dd>
+      <dt class="col-sm-3">    </dt>
+      <dd class="col-sm-9">    </dd>
+
+      &nbsp; &nbsp<dt><a class="btn btn-sm btn-info" href="{% url 'update2' antibody1.id %}">Update</a></dt>
+      &nbsp; &nbsp
+      <dt><a class="btn btn-sm btn-warning" href="{% url 'archive' antibody1.id %}">Archive</a></dt>
+    </dl>
+  </div>
+<br>
+<br>
+	<div class="col-md">
+		<h5><a class="font-weight-bold">{{antibody1.name}}</a>  Entries</h5>
+		<div class="card card-body">
+			<a class="btn btn-outline-primary btn-sm" href="{% url 'add3' antibody1.id %}">Add Entry</a>
+			<table class="table table-sm">
+	        <tr>
+	          <th>Lot Num.</th>
+	          <th>Location</th>
+            <th>Aliquoted</th>
+	          <th>Date Aliquoted</th>
+	          <th>Amount Remaining (ul)</th>
+	          <th>Exp. Date</th>
+            <th></th>
+	        </tr>
+					{% for i in antibody3 %}
+						<tr>
+							<td>{{i.lot_num}}</td>
+							<td>{{i.location}}</td>
+              <td>{{i.aliquoted}}</td>
+              <td>{{i.date_aliq}}</td>
+							<td>{{i.amount_remaining}}</td>
+              <td>{{i.exp_date}}</td>
+              <td><a class="btn btn-sm btn-info" href="{% url 'update3' i.id %}">Update</a></td>
+              <td><a class="btn btn-sm btn-danger" href="{% url 'removeInd' i.id %}">Remove</a></td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+
+{% endblock %}

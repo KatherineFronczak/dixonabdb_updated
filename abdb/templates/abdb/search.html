@@ -1,0 +1,66 @@
+{% extends 'abdb/main.html' %}
+
+{% block content %}
+{% if searched %}
+<br>
+
+
+	<div class="col-md">
+		<p class="text-muted">{{returns}} Entries Found</p>
+		<p></p>
+		<h5>Current Catalog</h5>
+		<div class="card card-body">
+			<table class="table table-sm">
+        <tr>
+          <th>Anitbody</th>
+          <th>Host</th>
+          <th>Company</th>
+          <th>Cat. Num.</th>
+          <th>Lot Num.</th>
+        </tr>
+				{% for i in antibody3 %}
+					<tr>
+						<td><a href="{% url 'antibody' i.id %}">{{i.name}}</a></td>
+						<td>{{i.host}}</td>
+						<td>{{i.company}}</td>
+						<td>{{i.cat_num}}</td>
+						<td>{{i.lot_num}}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+<br>
+			<div class="col-md">
+			<h5>Archives</h5>
+			<div class="card card-body">
+				<table class="table table-sm">
+	        <tr>
+	          <th>Anitbody</th>
+	          <th>Host</th>
+	          <th>Company</th>
+	          <th>Cat. Num.</th>
+	          <th>Lot Num.</th>
+	        </tr>
+					{% for i in antibody4 %}
+						<tr>
+							<td><a href="{% url 'antibody_archive' i.id %}">{{i.name}}</a></td>
+							<td>{{i.host}}</td>
+							<td>{{i.company}}</td>
+							<td>{{i.cat_num}}</td>
+							<td>{{i.lot_num}}</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+</div>
+{% else %}
+<br>
+<center>
+		<h5> You must search an item first </h5>
+  </center>
+
+{% endif %}
+{% endblock %}

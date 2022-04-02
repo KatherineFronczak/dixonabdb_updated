@@ -1,0 +1,54 @@
+{% extends 'abdb/main.html' %}
+
+{% block content %}
+
+<div class="col-md">
+  <div class="card card-body">
+    <h5>{{antibody1.name}}</h5>
+    <hr>
+    <dl class="row">
+      <dt class="col-sm-3">Host</dt>
+      <dd class="col-sm-9">{{antibody1.host}}</dd>
+
+      <dt class="col-sm-3">Company</dt>
+      <dd class="col-sm-9">{{antibody1.company}}</dd>
+
+      <dt class="col-sm-3">Cat. Num.</dt>
+      <dd class="col-sm-9">{{antibody1.cat_num}}</dd>
+
+      <dt class="col-sm-3">Most Recent Lot Num.</dt>
+      <dd class="col-sm-9">{{antibody1.most_recent_lot_num}}</dd>
+
+      <dt class="col-sm-3">Recommended WB concentrations</dt>
+      <dd class="col-sm-9">{{antibody1.recommended_WB_concentration}}</dd>
+
+      <dt class="col-sm-3">Recommended IHC concentrations</dt>
+      <dd class="col-sm-9">{{antibody1.recommended_IHC_concentration}}</dd>
+
+      <dt class="col-sm-3">Recommended IHC-P concentrations</dt>
+      <dd class="col-sm-9">{{antibody1.recommended_IHCp_concentration}}</dd>
+
+      <dt class="col-sm-3">Recommended IF concentrations</dt>
+      <dd class="col-sm-9">{{antibody1.recommended_IF_concentration}}</dd>
+
+      <dt class="col-sm-3">Notes</dt>
+      <dd class="col-sm-9">{{antibody1.notes}}</dd>
+
+      <dt class="col-sm-3">Date Archived</dt>
+      <dd class="col-sm-9">{{antibody1.date_created}}</dd>
+
+
+      <dt class="col-sm-3">    </dt>
+      <dd class="col-sm-9">    </dd>
+      <dt class="col-sm-3">    </dt>
+      <dd class="col-sm-9">    </dd>
+
+      &nbsp; &nbsp<dt><a class="btn btn-sm btn-info" href="{% url 'updateArc' antibody1.id %}">Update</a></dt>
+      &nbsp; &nbsp<dt><a class="btn btn-sm btn-warning" href="{% url 'restore' antibody1.id %}">Restore</a></dt>
+      &nbsp; &nbsp
+      <dt><a class="btn btn-sm btn-danger" href="{% url 'remove' antibody1.id %}">Remove</a></dt>
+    </dl>
+  </div>
+</div>
+
+{% endblock %}

@@ -11,7 +11,7 @@
 		</center>
 		<hr>
 		<div class="card card-body">
-			<a class="btn btn-primary  btn-sm btn-block">Add Antibody</a>
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'add' %}">Add Antibody</a>
 			<table class="table table-sm">
 				<tr>
 					<th>Anitbody</th>
@@ -21,6 +21,22 @@
 					<th>Status</th>
 					<th>      </th>
 				</tr>
+				{% for i,j in antibody1 %}
+					<tr>
+						<td><a href="{% url 'antibody' i.id %}">{{i.name}}</a></td>
+						<td>{{i.host}}</td>
+						<td>{{i.company}}</td>
+						<td>{{i.cat_num}}</td>
+						{% if j == "None" %}
+						<td><a class="text-danger"</a>{{j}}</td>
+						{% elif j == "Low" %}
+						<td><a class="text-warning"</a>{{j}}</td>
+						{% elif j == "OK" %}
+						<td><a class="text-success"</a>{{j}}</td>
+						{% endif %}
+						<td><a class="btn btn-sm btn-warning" href="{% url 'archive' i.id %}">Archive</a></td>
+					</tr>
+				{% endfor %}
 				</table>
 		</div>
 	</div>
