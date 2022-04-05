@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'dixonabdb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'demo_1',
         'USER': 'katherineF',
         'PASSWORD':'KF-4182016',
