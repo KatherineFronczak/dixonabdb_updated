@@ -16,6 +16,9 @@
       <dt class="col-sm-3">Cat. Num.</dt>
       <dd class="col-sm-9">{{antibody1.cat_num}}</dd>
 
+      <dt class="col-sm-3">Production</dt>
+      <dd class="col-sm-9">{{antibody1.production}}</dd>
+
       <dt class="col-sm-3">Total amount remaining (ul)</dt>
       <dd class="col-sm-9">{{amount_total}}</dd>
 
@@ -60,6 +63,7 @@
 	          <th>Location</th>
             <th>Aliquoted</th>
 	          <th>Date Aliquoted</th>
+            <th>Date Received</th>
 	          <th>Amount Remaining (ul)</th>
 	          <th>Exp. Date</th>
             <th></th>
@@ -70,6 +74,7 @@
 							<td>{{i.location}}</td>
               <td>{{i.aliquoted}}</td>
               <td>{{i.date_aliq}}</td>
+              <td>{{i.date_received}}</td>
 							<td>{{i.amount_remaining}}</td>
               <td>{{i.exp_date}}</td>
               <td><a class="btn btn-sm btn-info" href="{% url 'update3' i.id %}">Update</a></td>
