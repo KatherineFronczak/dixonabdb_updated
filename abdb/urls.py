@@ -1,3 +1,4 @@
+#url paths from app templates folder 
 from django.urls import path
 from . import views
 

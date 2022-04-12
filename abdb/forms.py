@@ -1,3 +1,4 @@
+#forms for making new entries to databases within website 
 from django.forms import ModelForm
 from django import forms
 

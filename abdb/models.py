@@ -1,6 +1,7 @@
+#database models
 from django.db import models
 
-# Create your models here.
+# main database, with information about antibodies in use ("antibody catalog/Home" on website)
 class Antibody(models.Model):
     cat_num = models.CharField(max_length=200, null=True, unique=True)
     name = models.CharField(max_length=200, null=True)
@@ -18,6 +19,8 @@ class Antibody(models.Model):
     def __str__(self):
         return self.cat_num
 
+#database for information regarding indvidual bottles of an anitbody in use
+#connected by catalog number to main database, many-one relationship
 class AntibodyInd(models.Model):
     cat_num = models.ForeignKey(Antibody, null=True, on_delete=models.CASCADE, to_field="cat_num")
     lot_num = models.CharField(max_length=200, null=True)
@@ -30,9 +33,8 @@ class AntibodyInd(models.Model):
     amount_remaining = models.IntegerField(null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
-
-    #add blank=true for ones we want to not be required
-
+#database for archived antibodies no longer in use
+#ability to restore an entry to main database if start using anitbody again in lab
 class AntibodyArc(models.Model):
     cat_num = models.CharField(max_length=200, null=True, unique=True)
     name = models.CharField(max_length=200, null=True)
@@ -48,7 +50,6 @@ class AntibodyArc(models.Model):
     notes = models.CharField(max_length=200, null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
-    #add blank=true for ones we want to not be required
 
     def __str__(self):
         return self.cat_num

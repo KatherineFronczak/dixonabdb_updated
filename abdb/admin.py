@@ -1,6 +1,5 @@
+#built in django admin page with models registered
 from django.contrib import admin
-
-# Register your models here.
 
 from .models import Antibody
 admin.site.register(Antibody)
